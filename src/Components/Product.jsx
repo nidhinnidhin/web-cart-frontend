@@ -73,13 +73,24 @@ const DesContainer = styled.div`
 const WishlistContainer = styled.div`
     padding-top: 0px;
     margin-top: -25px;
-    `;
+`;
     
-    const WishlistBtn = styled.button`
+const WishlistBtn = styled.button`
     height: 30px;
     width: 110px;
     font-size: 10px;
     cursor: pointer;
+    background-color: white;
+    border: 2px solid teal;
+    font-weight: 700;
+    &:hover{
+        background-color: black;
+        color:white;
+        border-radius: 5px;
+    }
+    &:active{
+        transform: translateY(2px);
+    }
 `; 
 
 
@@ -135,9 +146,7 @@ const Product = ({item}) => {
         </Innercontainer>
         <WishlistContainer onClick={() => toggleBtn(item.id)}>
             <WishlistBtn>ADD TO WISHLIST</WishlistBtn>
-        </WishlistContainer>
-
-        
+        </WishlistContainer>   
     </Container>
   )
 }

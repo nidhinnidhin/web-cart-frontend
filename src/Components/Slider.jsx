@@ -52,7 +52,7 @@ const Slide = styled.div`
     background-color: #232f3e;
 `;
 const ImgContainer = styled.div`
-    height: 70%;
+    height: 100%;
     width :50%;
     flex: 1;
     display: flex;
@@ -61,10 +61,10 @@ const ImgContainer = styled.div`
     
 `;
 const Image = styled.img`
-    height: 80%;
-    width:50%;
+    height: 100vh;
+    width:100%;
     border-radius: 5px;
-    object-fit: cover;
+    object-fit: contain;
     background-color: #232f3e;
     ${mobile({height: "140px",width: "100px", marginTop: "-280px", marginLeft: "50px"})}
 `;
@@ -118,10 +118,10 @@ const Slider = () => {
                 <ImgContainer>
                 <Image src={item.image}/>
                 </ImgContainer>
-                <InfoContainer>
+                {/* <InfoContainer>
                     <Title>{item.name}</Title>
                     <Desc>{item.description}</Desc>
-                </InfoContainer>
+                </InfoContainer> */}
             </Slide>
             ))}
         </Wraper>
