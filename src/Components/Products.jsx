@@ -148,7 +148,7 @@ const Products = () => {
 
   const allShoes = () => {
     axios
-      .get("http://3.24.139.91/api/product/")
+      .get("http://13.236.44.131/api/product/")
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);

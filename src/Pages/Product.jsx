@@ -105,7 +105,7 @@ const Product = () => {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`http://3.24.139.91/api/product/${params.id}/`).then((res) => {
+    axios.get(`http://13.236.44.131/api/product/${params.id}/`).then((res) => {
       setProduct(res.data);
     });
   }, []);
@@ -113,7 +113,7 @@ const Product = () => {
   const AddToCart = (id) => {
     axios
       .post(
-        `http://3.24.139.91/cart/cart-product/`,
+        `http://13.236.44.131/cart/cart-product/`,
         {
           product: id,
           count: 1,

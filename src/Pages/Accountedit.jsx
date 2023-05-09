@@ -91,7 +91,7 @@ const Accountedit = () => {
 
     useEffect(() => {
 
-        axios.get(`http://3.24.139.91/api/account/accountdetail/`,
+        axios.get(`http://13.236.44.131/api/account/accountdetail/`,
         {
             headers:{   
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
@@ -110,7 +110,7 @@ const Accountedit = () => {
     const accountEdit = (e) => {
         e.preventDefault()
 
-        axios.put(`http://3.24.139.91/api/account/accountedit/`,datas, 
+        axios.put(`http://13.236.44.131/api/account/accountedit/`,datas, 
         {
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),

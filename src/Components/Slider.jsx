@@ -92,7 +92,7 @@ const Slider = () => {
     const [slider, setSlider] = useState([])
 
     useEffect(() => {
-        axios.get(`http://3.24.139.91/slider/`)
+        axios.get(`http://13.236.44.131/slider/`)
         .then(res => {
             setSlider(res.data)
         })

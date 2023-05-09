@@ -123,7 +123,7 @@ const Address = () => {
             "pincode": pincode,
             "mobile": mobile,
         }
-        axios.post(`http://127.0.0.1:8000/address/address/`,data,
+        axios.post(`http://13.236.44.131/address/address/`,data,
         {
             headers: {
                 "Authorization": `Bearer ` + localStorage.getItem("access_token"),
