@@ -10,7 +10,7 @@ export const mobile = (props) => {
 };
 export const tab = (props) => {
     return css`
-        @media only screen and (max-width: 1200px){
+        @media (min-width: 600px) and (max-width: 1200px){
             ${props}
         }
     `;

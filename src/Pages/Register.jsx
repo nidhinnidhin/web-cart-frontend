@@ -3,7 +3,6 @@ import {useState} from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import {mobile} from "../Responsive";
-import {tab} from "../Responsive"
 import toast,{ Toaster } from "react-hot-toast";
 
 
@@ -18,11 +17,11 @@ const Container = styled.div`
 const Wrapper = styled.div`
     padding: 20px;
     width: 40%;
-    height: 500px;
+    height: fit-content;
     border: 1px solid gray;
     border-radius:5px;
     background-color:#0f111b;
-    ${mobile({width: "300px"})}
+    ${mobile({width: "80%"})}
 `;
 const Title = styled.h1`
     font-size: 24px;
@@ -44,7 +43,7 @@ const Input = styled.input`
     margin:20px 20px 0px 0px;
     padding:10px ;
     border-radius: 5px;
-    ${mobile({width: "270px"})}
+    ${mobile({width: "92%"})}
 `;
 const Agreement = styled.span`
     font-size:12px ;
@@ -75,6 +74,13 @@ const Button = styled.button`
         transform: translateY(2px);
     }
 `;
+const Link = styled.a`
+font-size:12px ;
+margin:5px 0px ;
+color: white;
+text-decoration:underline ;
+    cursor: pointer;
+`;
 
 const Register = () => {
     
@@ -101,7 +107,7 @@ const Register = () => {
                 "password":password,
                 "confirmpassword":confirmpassword,
             }
-            axios.post("http://13.236.44.131/api/account/register/",datas, {
+            axios.post("http://localhost:8000/api/account/register/",datas, {
                 headers:{
                     "Content-Type":'application/json'
                 }
@@ -113,7 +119,7 @@ const Register = () => {
                     "username":username,
                     "password":password
                 }
-                axios.post("http://13.236.44.131/api/login/",data)
+                axios.post("http://localhost:8000/api/login/",data)
                 .then(res=>{
                     console.log(res.data)
                     localStorage.setItem("access_token",res.data.access)
@@ -133,6 +139,9 @@ const Register = () => {
                 console.log(err.response)
             })
         }
+    }
+    const login = () => {
+        history.push('/login')
     }
 
 
@@ -258,6 +267,8 @@ const Register = () => {
                 <Agreement>
                     By creating an acount, i concent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b>
                 </Agreement>
+                <Link>YOU HAVE YOUR ACCOUNT?</Link>
+                <Link onClick={login}>Login</Link>
                 <ButtonContainer>
                     <Button type="button" onClick={validateForm}>{loading?"Creating ...":"Create"}</Button>
                 </ButtonContainer>

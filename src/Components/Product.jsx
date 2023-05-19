@@ -111,7 +111,8 @@ const Product = ({item}) => {
     }
 
     const toggleBtn = (id) => {
-        axios.post(`http://13.236.44.131/wishlist/wishlistlisting/`,{
+        console.log(id)
+        axios.post(`http://localhost:8000/wishlist/wishlistlisting/`,{
             'product':id
         },
         {

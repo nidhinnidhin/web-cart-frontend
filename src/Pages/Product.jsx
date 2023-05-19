@@ -14,6 +14,7 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 30px;
   display: flex;
+  ${mobile({flexDirection:"column"})}
 `;
 const ImgContainer = styled.div`
   flex: 1;
@@ -93,7 +94,7 @@ const SecondImage = styled.img`
   height: 300px;
   object-fit: contain;
   margin-left: 90px;
-  ${mobile({ height: "23vh", marginTop: "20px" })}
+  ${mobile({ height: "18vh", marginTop: "20px" })}
 `;
 
 const Product = () => {
@@ -105,7 +106,7 @@ const Product = () => {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`http://13.236.44.131/api/product/${params.id}/`).then((res) => {
+    axios.get(`http://localhost:8000/api/product/${params.id}/`).then((res) => {
       setProduct(res.data);
     });
   }, []);
@@ -113,7 +114,7 @@ const Product = () => {
   const AddToCart = (id) => {
     axios
       .post(
-        `http://13.236.44.131/cart/cart-product/`,
+        `http://localhost:8000/cart/cart-product/`,
         {
           product: id,
           count: 1,

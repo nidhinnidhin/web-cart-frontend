@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { mobile } from "../Responsive";
+import "./Style.css"
 
 const Container = styled.div`
   padding: 20px;
@@ -60,8 +61,17 @@ const FilterCategories = styled.div`
   margin: 30px;
   display: flex;
   justify-content: space-around;
+  align-items:center;
+  ${mobile({
+    flexDirection: "column",
+    display: "flex",
+    flexWrap: "wrap",
+    height: "200px",
+  })}
 `;
-const Categories = styled.div``;
+const Categories = styled.div`
+  ${mobile({ margin: "0px 3px" })}
+`;
 const FilterButton = styled.button`
   height: 45px;
   width: 150px;
@@ -78,10 +88,25 @@ const FilterButton = styled.button`
   &:active {
     transform: translateY(2px);
   }
+  ${mobile({ margin: "5px 0px" })}
+`;
+
+const Pagination = styled.div`
+    padding: 10px;
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
+const Numbers = styled.div`
+    padding: 15px 20px;
+    border: 1px solid gray;
+    cursor: pointer;
 `;
 
 const Products = () => {
   const [product, setProduct] = useState([]);
+  const [page, setPage] = useState(1)
 
   const [search, setSearch] = useState({
     searchValue: "",
@@ -90,7 +115,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://3.24.139.91/api/product/")
+      .get("http://localhost:8000/api/product/")
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);
@@ -139,6 +164,13 @@ const Products = () => {
     setProduct(blueShoe);
   };
 
+  const yellowShoes = (catItem) => {
+    const yellowShoe = product.filter((curData) => {
+      return curData.category === catItem;
+    });
+    setProduct(yellowShoe);
+  };
+
   const redShoes = (catItem) => {
     const redShoe = product.filter((curData) => {
       return curData.category === catItem;
@@ -148,7 +180,7 @@ const Products = () => {
 
   const allShoes = () => {
     axios
-      .get("http://13.236.44.131/api/product/")
+      .get("http://localhost:8000/api/product/")
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);
@@ -157,6 +189,11 @@ const Products = () => {
         console.log(err.response);
       });
   };
+
+  const selectPageHandler = (selectedPage) => {
+    if(selectedPage >= 1 && selectedPage <= Math.ceil(product.length / 10) && selectedPage !== page)
+    setPage(selectedPage)
+  }
 
   return (
     <React.Fragment>
@@ -192,17 +229,29 @@ const Products = () => {
         <Categories>
           <FilterButton onClick={() => redShoes("red")}>Red Shoes</FilterButton>
         </Categories>
+        <Categories>
+          <FilterButton onClick={() => yellowShoes("yellow")}>
+            Yellow Shoes
+          </FilterButton>
+        </Categories>
       </FilterCategories>
 
       <Container>
-        {
-          product ?
-          product.map((item) => {
-            return <Product item={item} key={item.id} />
+        {product ? (
+          product.slice(page * 10 - 10, page * 10).map((item) => {
+            return <Product item={item} key={item.id} />;
           })
-          :
+        ) : (
           <h2>No product yet!</h2>
-        }
+        )}
+          <Pagination>
+            <Numbers className={page > 1 ? "" : "pagination__disable"}    onClick={() => selectPageHandler(page-1)}>◀</Numbers>
+            {[...Array(Math.ceil(product.length / 10))].map((_,i) => ( <Numbers className={page === i+1 ? "pagination__selected" : ""} onClick={() => selectPageHandler(i+1)} key={i}>{i + 1}</Numbers>
+            ))}
+            <Numbers onClick={() => selectPageHandler(page+1)}
+              className={page < Math.ceil(product.length / 10) ? "" : "pagination__disable"}
+            >▶</Numbers>
+          </Pagination>
       </Container>
     </React.Fragment>
   );

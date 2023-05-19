@@ -12,7 +12,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     background-color:#0e1320;
-`;
+    `;
 
 const Wrapper = styled.div`
     padding: 20px;
@@ -22,14 +22,15 @@ const Wrapper = styled.div`
     border:1px solid gray;
     border-radius:5px;
     color: white;
-    ${mobile({height: "250px", width: "50%"})}
+    ${mobile({width:"80%"})}
 `;
 const Title = styled.h1`
     font-size: 24px;
-    font-weight:300 ;
+    font-weight:300;
+    ${mobile({fontSize:"15px"})}
 `;
 const Form = styled.form`
-    display:flex ;
+    display:flex;
     flex-direction:column ;
     align-items: center;
     justify-content: center;
@@ -76,7 +77,7 @@ const ForgotPass = () => {
 
     }
     const resetPassword = () => {
-        axios.post(`http://13.236.44.131/api/account/reset-password/`,
+        axios.post(`http://localhost:8000/api/account/reset-password/`,
         {
             "otp":otp,
             "email":email,
@@ -93,7 +94,7 @@ const ForgotPass = () => {
     }
 
     const generateOtp = () => {
-        axios.post(`http://13.236.44.131/api/account/generate-otp/`, 
+        axios.post(`http://localhost:8000/api/account/generate-otp/`, 
         {
             "email": email,
         })

@@ -10,6 +10,7 @@ import { tab } from '../Responsive';
 import profile from '../img/user.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useStateValue } from '../stateProvider' ;
+import logo from '../img/logo.png';
 
 
 const Container = styled.div`
@@ -115,7 +116,7 @@ const Navbar = () => {
 
     const submit = () =>{
 
-        axios.post("http://13.236.44.131/api/account/logout/blacklist/",{
+        axios.post("http://localhost:8000/api/account/logout/blacklist/",{
             refresh_token: localStorage.getItem('refresh_token'),
         })
         .then(res=>{
@@ -139,10 +140,10 @@ const Navbar = () => {
         <Wraper>
             <Left>
                 <HomeIcon>
-                    <LogoImg onClick={() => {history.push('/')}} src = "https://unyscape.com/wp-content/uploads/2020/10/shopify.png"/>
+                    <LogoImg onClick={() => {history.push('/')}} src ={logo}/>
                 </HomeIcon>
             </Left>
-            <Center><Logo>SHOPIFY</Logo></Center>
+            <Center><Logo>SHOEPY</Logo></Center>
             <Right>
                 {/* <MenuItem onClick = { () => {
                     history.push('/register')

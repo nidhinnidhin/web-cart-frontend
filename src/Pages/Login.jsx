@@ -18,12 +18,13 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
     padding: 20px;
-    width: 50%;
+    width: 30%;
     height: 300px;
     background-color: #0f111b;
     border:1px solid gray;
     border-radius:5px;
     color: white;
+    ${mobile({width:"70%"})}
 `;
 const Title = styled.h1`
     font-size: 24px;
@@ -35,7 +36,7 @@ const Form = styled.form`
 `;
 const Input = styled.input`
     flex: 1;
-    min-width:30% ;
+    min-width:20% ;
     font-family: "Convergence", sans-serif;
     font-family: inherit;
     font-size: inherit;
@@ -55,6 +56,7 @@ const Button = styled.button`
     &:active{
         transform: translateY(2px);
     }
+    ${mobile({margin:"5px"})}
 `;
 
 
@@ -109,7 +111,7 @@ const Login = () => {
             "password":password
         }
         console.log("hello")
-        axios.post("http://13.236.44.131/api/login/",data)
+        axios.post("http://localhost:8000/api/login/",data)
         .then(res=>{
             console.log(res.data)
             localStorage.setItem("access_token",res.data.access)

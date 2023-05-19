@@ -40,6 +40,7 @@ const Top = styled.div`
     display:flex ;
     align-items:center ;
     justify-content:space-between ;
+    ${mobile({flexDirection:"column", flexWrap:"wrap",height:"100px" })}
 `;
 const TopButton = styled.button`
     padding:10px ;
@@ -48,8 +49,7 @@ const TopButton = styled.button`
     border:${props => props.type === "filled" && "none"} ;
     background-color:${props => props.type === "filled" ? "black" : "transparent"} ;
     color:${props => props.type === "filled" && "white"} ;
-    ${mobile({fontSize: "10px", height: "30px", width: "130px", marginTop: "10px"})}
-    ${tab({height: "30px", fontSize: "8px", border: "0.5px solid gray"})}
+    ${mobile({fontSize: "10px", height: "40px", width: "130px", marginTop: "5px", borderRadius:"10px"})}
 `;  
 
 const TopTexts = styled.div`
@@ -84,7 +84,6 @@ const Image = styled.img`
     padding: 10px;
     object-fit: contain;
     ${mobile({height: "70px", width: "70px"})}
-    ${tab({height: "150px", width: "150px", marginTop: "13px"})}
 
     &:hover {
         transform: scale(1.09);
@@ -106,7 +105,7 @@ const ProductDetail = styled.span`
 `;
 const ProductName = styled.span`
     margin :5px 0px ;
-    ${mobile({fontSize: "12px", marginLeft: "90px", marginTop: "60px"})}
+    ${mobile({fontSize: "12px", marginLeft: "20px", marginTop: "20px"})}
 `;
 const ProductSize = styled.span`
      flex : 1;
@@ -153,7 +152,6 @@ const Product = styled.div`
     background-color: "#f8f8f8";
     margin:10px 0px ;
     ${mobile({height: "100px",width: "100%", marginTop: "10px", backgroundColor: "#f8f8f8"})}
-    ${tab({height: "200px",width: "100%", marginTop: "10px", backgroundColor: "#f8f8f8"})}
 `;
 
 const SummaryTitle = styled.h1`
@@ -225,7 +223,7 @@ const Cart = () => {
   const stripePromise = loadStripe('pk_test_51LVzIiSHbelfXOXs2UwOPxn0UZuulmI2mtyUOnivfXahojRw7F5PsI6ngrI7eXke5oJ5yOSRpDPv8gQECEGfl4Jb00Ujnj9dD1');
 
     useEffect(() => {
-        axios.get(`http://13.236.44.131/cart/`,{
+        axios.get(`http://localhost:8000/cart/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -271,7 +269,7 @@ const Cart = () => {
             console.log(result);
             alert("Payment success.")
 
-            axios.get(`http://13.236.44.131/checkout/cart-checkout/`,
+            axios.get(`http://localhost:8000/checkout/cart-checkout/`,
             {
                 headers:{
                     "Authorization":`Bearer `+localStorage.getItem("access_token"),
@@ -309,7 +307,7 @@ const Cart = () => {
 
     const cartCountDecrement = (id, count, index) => {
 
-        axios.post(`http://13.236.44.131/cart/cart-product-decrement/`, {
+        axios.post(`http://localhost:8000/cart/cart-product-decrement/`, {
             "product": id,
             "count": count-1,
         },
@@ -329,7 +327,7 @@ const Cart = () => {
     }
 
     const cartCountIncrement = (id, count, index) => {
-        axios.post(`http://13.236.44.131/cart/cart-product/`, {
+        axios.post(`http://localhost:8000/cart/cart-product/`, {
             "product": id,
             "count": count+1,
         },
@@ -353,7 +351,7 @@ const Cart = () => {
 
     const cartDelete = (id) => {
         console.log(id);
-        axios.delete(`http://13.236.44.131/cart/cartDelete/${id}/`,
+        axios.delete(`http://localhost:8000/cart/cartDelete/${id}/`,
         {
             headers: {
                 "Authorization": `Bearer `+localStorage.getItem("access_token"),
@@ -362,7 +360,7 @@ const Cart = () => {
         }).then((res) => {
             console.log("deleted");
             console.log(res.data);
-            axios.get(`http://13.236.44.131/cart/`,{
+            axios.get(`http://localhost:8000/cart/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -397,7 +395,7 @@ const Cart = () => {
         history.push("/address")
     }
     const checkoutAllPrdoducts = () => {
-        axios.get("http://13.236.44.131/checkout/test-checkout/", {
+        axios.get("http://localhost:8000/checkout/test-checkout/", {
             headers: {
                 "Authorization": `Bearer `+localStorage.getItem("access_token"),
                 "Content-Type": 'application/json'
