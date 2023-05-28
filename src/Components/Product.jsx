@@ -67,7 +67,7 @@ const Des = styled.h6`
 
 const DesContainer = styled.div`
     height: 55px;
-    overflow: hidden;
+    overflow: hidden;   
 `;
 
 const WishlistContainer = styled.div`

@@ -26,7 +26,6 @@ const Anouncement = () => {
     axios.get(`http://localhost:8000/announcement/`)
     .then((res)=>{
       setAnnouncement(res.data)
-      console.log(res.data);
     })
     .catch(err=>{
       console.log(err.response);
@@ -37,7 +36,7 @@ const Anouncement = () => {
     <Container>
       {announcement.map((item) => {
           return(
-            <AnnouncementContainer>
+            <AnnouncementContainer key={item.id}>
               {item.announcement}
             </AnnouncementContainer>
           )

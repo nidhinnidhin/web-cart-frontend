@@ -5,7 +5,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { mobile } from "../Responsive";
-import "./Style.css"
+import "./Style.css";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const Container = styled.div`
   padding: 20px;
@@ -97,11 +99,20 @@ const Pagination = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 `;
 const Numbers = styled.div`
-    padding: 15px 20px;
-    border: 1px solid gray;
+    padding: 20px 20px;
     cursor: pointer;
+    &:hover{
+      color: blue;
+    }
+`;
+const Number = styled.div`
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #94e3f7;
 `;
 
 const Products = () => {
@@ -191,7 +202,7 @@ const Products = () => {
   };
 
   const selectPageHandler = (selectedPage) => {
-    if(selectedPage >= 1 && selectedPage <= Math.ceil(product.length / 10) && selectedPage !== page)
+    if(selectedPage >= 1 && selectedPage <= Math.ceil(product.length / 5) && selectedPage !== page)
     setPage(selectedPage)
   }
 
@@ -245,12 +256,12 @@ const Products = () => {
           <h2>No product yet!</h2>
         )}
           <Pagination>
-            <Numbers className={page > 1 ? "" : "pagination__disable"}    onClick={() => selectPageHandler(page-1)}>◀</Numbers>
+            <Number className={page > 1 ? "" : "pagination__disable"}    onClick={() => selectPageHandler(page-1)}><ArrowBackIosNewIcon/></Number>
             {[...Array(Math.ceil(product.length / 10))].map((_,i) => ( <Numbers className={page === i+1 ? "pagination__selected" : ""} onClick={() => selectPageHandler(i+1)} key={i}>{i + 1}</Numbers>
             ))}
-            <Numbers onClick={() => selectPageHandler(page+1)}
+            <Number onClick={() => selectPageHandler(page+1)}
               className={page < Math.ceil(product.length / 10) ? "" : "pagination__disable"}
-            >▶</Numbers>
+            ><ArrowForwardIosIcon/></Number>
           </Pagination>
       </Container>
     </React.Fragment>

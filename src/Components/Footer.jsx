@@ -83,9 +83,9 @@ const Footer = () => {
   return (
     <Container>
         <Left>
-            <Logo>SHOPIFY</Logo>
+            <Logo>TRENDY SHOES</Logo>
                 <Desc>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque modi fugit aliquid! Exercitationem sequi magnam doloremque neque quia ad, voluptates sed sapiente porro nisi rem possimus, fugiat molestias quas adipisci.
+                Welcome to our shoe shop! We pride ourselves on offering a wide selection of footwear to meet your every need and style preference. Step inside and discover a world of shoes that combine comfort, quality, and fashion.
                 </Desc>
                 <SocialContainer>
                     <SocialIcon color="3B5999">
@@ -107,20 +107,20 @@ const Footer = () => {
             <List>
                 <ListItem>Home</ListItem>
                 <ListItem>Cart</ListItem>
-                <ListItem>Man Fashion</ListItem>
-                <ListItem>Women Fashion</ListItem>
+                <ListItem>Man Shoes</ListItem>
+                <ListItem>Different styles</ListItem>
                 <ListItem>Accessories</ListItem>
                 <ListItem>Order Tracking</ListItem>
                 <ListItem>Wishlist</ListItem>
-                <ListItem>Wishlist</ListItem>
+                <ListItem>Filter</ListItem>
                 <ListItem>Terms</ListItem>
             </List>
         </Center>
         <Right>
             <Title>Contact</Title>
-            <ContactItem><LocationOn style={{marginRight : "10px"}} /> 622 Dixie Path, South Tobinchester 98336</ContactItem>
-            <ContactItem><Phone style={{marginRight : "10px"}}/>+1 489 323 233</ContactItem>
-            <ContactItem><Email style={{marginRight : "10px"}}/>contact@shopify.dev</ContactItem>
+            <ContactItem><LocationOn style={{marginRight : "10px"}} /> 622 Bangalure, Whitefield, Prashanth Layout, 560066</ContactItem>
+            <ContactItem><Phone style={{marginRight : "10px"}}/>+91 6385 386 029</ContactItem>
+            <ContactItem><Email style={{marginRight : "10px"}}/>nidhinbabu171@gmail.com</ContactItem>
             <Payment src = "https://www.horusrc.com/media/wysiwyg/pay_by_cards.jpg"/>
         </Right>
     </Container>

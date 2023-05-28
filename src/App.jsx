@@ -17,6 +17,7 @@ import Checkout from './Pages/Checkout';
 import Wishlist from './Pages/Wishlist';
 import ForgotPass from './Pages/ForgotPass';
 import Accountedit from './Pages/Accountedit';
+import AddressEdit from './Pages/AddressEdit';
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
         <Route path = "/forgotPass" component={ForgotPass} />
         {/* <Route path = "/test-checkout" component={TestCheckout} /> */}
         <Route path = "/accountedit" component={Accountedit} />
+        <Route path = "/addressedit" component={AddressEdit} />
       </Switch>
     </Router>
 

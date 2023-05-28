@@ -9,9 +9,7 @@ import { mobile } from '../Responsive';
 import { tab } from '../Responsive';
 import profile from '../img/user.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useStateValue } from '../stateProvider' ;
 import logo from '../img/logo.png';
-
 
 const Container = styled.div`
     height: 60px;
@@ -92,9 +90,9 @@ const LogoImg = styled.img`
 const Image = styled.img`
     height:35px;
     width:100px;
-    cursor: pointer;
+    cursor: pointer;    
     object-fit: contain;
-    ${mobile({height: "28px", width: "28px", marginLeft: "10px"})}
+    ${mobile({height: "28px", width: "28px"})}
 `;
 
 const User = styled.div`
@@ -103,14 +101,11 @@ const User = styled.div`
 
 const Basket = styled.div`
     margin-right: 5px;
-    ${mobile({marginRight: "13px"})}
 `;
 
 const Navbar = () => {
 
     const [open, setOpen] = useState(false);
-
-    const [{ basket }, dispatch] = useStateValue();
  
     const history = useHistory()
 
@@ -143,7 +138,7 @@ const Navbar = () => {
                     <LogoImg onClick={() => {history.push('/')}} src ={logo}/>
                 </HomeIcon>
             </Left>
-            <Center><Logo>SHOEPY</Logo></Center>
+            <Center><Logo>TRENDY</Logo></Center>
             <Right>
                 {/* <MenuItem onClick = { () => {
                     history.push('/register')
@@ -151,13 +146,13 @@ const Navbar = () => {
 
                 <MenuItem onClick = { () => {
                     history.push('/login')
-                }}>SIGN IN</MenuItem>
-                <MenuItem onClick={submit}>LOG OUT</MenuItem>
+                }}>LOGIN</MenuItem>
+                <MenuItem onClick={submit}>LOGOUT</MenuItem>
                 <MenuItem>
 
                 <Basket>
 
-                <Badge badgeContent={basket?.length} color="primary">
+                <Badge badgeContent={0} color="primary">
                     <ShoppingCartOutlined onClick = { () => {
                         history.push('/cart')
                     }} color="action" />

@@ -8,7 +8,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { mobile, tab } from "../Responsive";
 import toast, { Toaster } from "react-hot-toast";
-import { useStateValue } from "../stateProvider";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -99,7 +98,6 @@ const SecondImage = styled.img`
 
 const Product = () => {
   const [product, setProduct] = useState({});
-  const [{ basket }, dispatch] = useStateValue();
 
   const params = useParams();
 
@@ -130,13 +128,6 @@ const Product = () => {
         toast(" product added to cart", {
           duration: 5000,
         });
-        dispatch({
-          type: "ADD_TO_BASKET",
-          item: {
-            product: product,
-          },
-        });
-        console.log(product);
       })
       .catch((err) => {
         console.log(err.response);
