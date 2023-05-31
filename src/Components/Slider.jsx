@@ -68,7 +68,7 @@ const Slider = () => {
     const [slider, setSlider] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/slider/`)
+        axios.get(`http://3.24.232.247/slider/`)
         .then(res => {
             setSlider(res.data)
         })

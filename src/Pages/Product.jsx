@@ -104,7 +104,7 @@ const Product = () => {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/product/${params.id}/`).then((res) => {
+    axios.get(`http://3.24.232.247/api/product/${params.id}/`).then((res) => {
       setProduct(res.data);
     });
   }, []);
@@ -112,7 +112,7 @@ const Product = () => {
   const AddToCart = (id) => {
     axios
       .post(
-        `http://localhost:8000/cart/cart-product/`,
+        `http://3.24.232.247/cart/cart-product/`,
         {
           product: id,
           count: 1,

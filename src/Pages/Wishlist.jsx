@@ -122,7 +122,7 @@ const Wishlist = () => {
     const history = useHistory()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/wishlist/`,{
+        axios.get(`http://3.24.232.247/wishlist/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -143,7 +143,7 @@ const Wishlist = () => {
 
     const deleteProduct = (id) => {
         console.log(id)
-        axios.delete(`http://localhost:8000/wishlist/wishlistdelete/${id}/`, 
+        axios.delete(`http://3.24.232.247/wishlist/wishlistdelete/${id}/`, 
         {
             headers: {
                 "Authorization": `Bearer `+localStorage.getItem("access_token"),
@@ -152,7 +152,7 @@ const Wishlist = () => {
         }).then((res) => {
             console.log("Deleted")
             console.log(res.data)
-            axios.get(`http://13.236.44.131/wishlist/`,{
+            axios.get(`http://3.24.232.247/wishlist/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'

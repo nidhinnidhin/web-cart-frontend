@@ -82,7 +82,7 @@ const AddressEdit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/address/addressdetail/`, {
+      .get(`http://3.24.232.247/address/addressdetail/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ const AddressEdit = () => {
   const addressEdit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/address/addressedit/`, datas, {
+      .put(`http://3.24.232.247/address/addressedit/`, datas, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",

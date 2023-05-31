@@ -241,7 +241,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/cart/`, {
+      .get(`http://3.24.232.247/cart/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -288,7 +288,7 @@ const Cart = () => {
         alert("Payment success.");
 
         axios
-          .get(`http://localhost:8000/checkout/cart-checkout/`, {
+          .get(`http://3.24.232.247/checkout/cart-checkout/`, {
             headers: {
               Authorization: `Bearer ` + localStorage.getItem("access_token"),
               "Content-Type": "application/json",
@@ -333,7 +333,7 @@ const Cart = () => {
   const cartCountDecrement = (id, count, index) => {
     axios
       .post(
-        `http://localhost:8000/cart/cart-product-decrement/`,
+        `http://3.24.232.247/cart/cart-product-decrement/`,
         {
           product: id,
           count: count - 1,
@@ -357,7 +357,7 @@ const Cart = () => {
   const cartCountIncrement = (id, count, index) => {
     axios
       .post(
-        `http://localhost:8000/cart/cart-product/`,
+        `http://3.24.232.247/cart/cart-product/`,
         {
           product: id,
           count: count + 1,
@@ -384,7 +384,7 @@ const Cart = () => {
   const cartDelete = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:8000/cart/cartDelete/${id}/`, {
+      .delete(`http://3.24.232.247/cart/cartDelete/${id}/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -394,7 +394,7 @@ const Cart = () => {
         console.log("deleted");
         console.log(res.data);
         axios
-          .get(`http://localhost:8000/cart/`, {
+          .get(`http://3.24.232.247/cart/`, {
             headers: {
               Authorization: `Bearer ` + localStorage.getItem("access_token"),
               "Content-Type": "application/json",
@@ -430,7 +430,7 @@ const Cart = () => {
   };
   const checkoutAllPrdoducts = () => {
     axios
-      .get("http://localhost:8000/checkout/test-checkout/", {
+      .get("http://3.24.232.247/checkout/test-checkout/", {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",

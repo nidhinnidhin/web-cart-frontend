@@ -126,7 +126,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/product/")
+      .get("http://3.24.232.247/api/product/")
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);
@@ -144,7 +144,7 @@ const Products = () => {
 
     axios
       .get(
-        "http://127.0.0.1:8000/api/product/search/search/?search=" + searchValue
+        "http://3.24.232.247/api/product/search/search/?search=" + searchValue
       )
       .then((res) => {
         let allPosts = res.data;
@@ -191,7 +191,7 @@ const Products = () => {
 
   const allShoes = () => {
     axios
-      .get("http://localhost:8000/api/product/")
+      .get("http://3.24.232.247/api/product/")
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);

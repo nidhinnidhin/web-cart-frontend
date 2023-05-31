@@ -85,7 +85,7 @@ const Accountedit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/account/accountdetail/`, {
+      .get(`http://3.24.232.247/api/account/accountdetail/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -102,7 +102,7 @@ const Accountedit = () => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:8000/api/account/accountedit/`, datas, {
+      .put(`http://3.24.232.247/api/account/accountedit/`, datas, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",

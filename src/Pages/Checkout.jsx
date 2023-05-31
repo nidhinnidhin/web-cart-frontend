@@ -99,7 +99,7 @@ const Checkout = () => {
     const history = useHistory()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/checkout/checkout-carts/`, {
+        axios.get(`http://3.24.232.247/checkout/checkout-carts/`, {
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -112,7 +112,7 @@ const Checkout = () => {
     },[])
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/checkout/checkout-list/`, {
+        axios.get(`http://3.24.232.247/checkout/checkout-list/`, {
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
