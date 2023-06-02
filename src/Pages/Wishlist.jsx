@@ -24,47 +24,40 @@ const TitleContainer = styled.div`
 
 `;
 const Title = styled.h1`
-    font-size: 25px;
+    font-size: 28px;
+    text-decoration: underline;
     font-weight: 100;
     margin-top: 20px;
-    ${mobile({fontSize: "15px"})}
-    ${tab({fontSize: "16px"})}
+    ${mobile({fontSize: "15px",fontWeight:"100", marginTop: "25px"})}
 `;
 const CheckoutList = styled.div`
     background-color: white;
 `;
 
 const DescriptionContainer = styled.div`
-    margin-top:30px ;
-    height:50px;
+    height:40px;
     overflow: hidden;
 `;
 
 const AmountContainer = styled.div`
-    margin-top:10px ;
 `;
 
 const Description = styled.p`
     font-size: 13px;
-    font-family: Arial;
-    font-family: inherit;
 `;
 const Amount = styled.p`
     font-size: 13px;
-    font-family: Arial;
-    font-family: inherit;
 `;
 
 const ProductContainer = styled.div`
     height: 250px;
-    width: 59%;
+    width: 80%;
     margin-top: 15px;
     display: flex;
     border-radius: 5px;
     align-items: center;
-    justify-content: space-between;
-    background-color: #f3f8f9;
-    ${mobile({height: "150px", width: "350px"})}
+    background-color: #f8f8f8;
+    ${mobile({height: "120px", width: "95%"})}
     ${tab({height: "150px", width: "350px"})}
 `;
 
@@ -74,8 +67,7 @@ const EmptySpace = styled.div`
 `;
 
 const ImageContainer = styled.div`
-    display: flex;
-    align-items: center;
+    
 `;
 
 const Image = styled.img`
@@ -83,8 +75,7 @@ const Image = styled.img`
     height: 200px;
     width: 150px;
     margin: 0px 20px;
-    ${mobile({height: "100px"})}
-    ${tab({height: "100px"})}
+    ${mobile({height: "100px", margin:"0px"})}
 
     &:hover {
         transform: scale(1.09);
@@ -102,18 +93,33 @@ const AddressContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
-const DeleteIcon = styled.div`
-    color: red;
-    display: flex;
-    cursor: pointer;
-    margin: 0px 30px;
-`;
-const ProductListingCOntainer = styled.div`
+const ProductListingContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+`;
+const Right = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+const RemoveButton = styled.button`
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  color: red;
+  border-radius: 50%;
+  margin-right: 20px;
+  cursor: pointer;
+  ${mobile({
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    border: "none",
+    color: "red",
+  })}
 `;
 
 const Wishlist = () => {
@@ -122,7 +128,7 @@ const Wishlist = () => {
     const history = useHistory()
 
     useEffect(() => {
-        axios.get(`http://3.24.232.247/wishlist/`,{
+        axios.get(`http://localhost:8000/wishlist/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -143,7 +149,7 @@ const Wishlist = () => {
 
     const deleteProduct = (id) => {
         console.log(id)
-        axios.delete(`http://3.24.232.247/wishlist/wishlistdelete/${id}/`, 
+        axios.delete(`http://localhost:8000/wishlist/wishlistdelete/${id}/`, 
         {
             headers: {
                 "Authorization": `Bearer `+localStorage.getItem("access_token"),
@@ -152,7 +158,7 @@ const Wishlist = () => {
         }).then((res) => {
             console.log("Deleted")
             console.log(res.data)
-            axios.get(`http://3.24.232.247/wishlist/`,{
+            axios.get(`http://localhost:8000/wishlist/`,{
             headers:{
                 "Authorization":`Bearer `+localStorage.getItem("access_token"),
                 "Content-Type":'application/json'
@@ -173,10 +179,15 @@ const Wishlist = () => {
             </Header>
             <CheckoutList>
                 <TitleContainer>
-                    <Title>YOUR WISHLIST</Title>
+                    {
+                        wishlist.length > 0 ?
+                        <Title>YOUR WISHLIST</Title>
+                        :
+                        <Title>YOUR WISHLIST IS EMPTY</Title>
+                    }
                 </TitleContainer>
             </CheckoutList>
-            <ProductListingCOntainer>
+            <ProductListingContainer>
                 {
                     wishlist.map((item) => {
                     return(
@@ -184,6 +195,7 @@ const Wishlist = () => {
                             <ImageContainer>
                                 <Image src={item.product.image} onClick={() => wishlistDetail(item.product.id)}/>
                             </ImageContainer>
+                            <Right>
                             <AddressContainer>
                                 <TitleNameContainer>
                                     <TitleName>{item.product.name}</TitleName>
@@ -195,14 +207,16 @@ const Wishlist = () => {
                                     <Amount>${item.product.price}</Amount>
                                 </AmountContainer>
                             </AddressContainer>
-                            <DeleteIcon onClick={() => deleteProduct(item.id)}>
+                            <RemoveButton onClick={() => deleteProduct(item.id)}>
                                 <DeleteForeverIcon/>
-                            </DeleteIcon>
+                            </RemoveButton>
+                            </Right>
                         </ProductContainer>
                         )
                     })
                 }
-            </ProductListingCOntainer>
+
+            </ProductListingContainer>
             <EmptySpace>
             </EmptySpace>
             <Bottom>

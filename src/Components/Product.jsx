@@ -111,8 +111,8 @@ const Product = ({item}) => {
     }
 
     const toggleBtn = (id) => {
-        console.log(id)
-        axios.post(`http://3.24.232.247/wishlist/wishlistlisting/`,{
+        console.log("wishlistid = ",id)
+        axios.post(`http://localhost:8000/wishlist/wishlistlisting/`,{
             'product':id
         },
         {
@@ -128,7 +128,7 @@ const Product = ({item}) => {
             console.log(res.data);
         })
         .catch((err) => {
-            console.log(err.message);
+            console.log(err.response);
         })
     }
 

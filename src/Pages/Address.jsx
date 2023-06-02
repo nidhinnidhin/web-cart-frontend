@@ -119,7 +119,7 @@ const Address = () => {
       mobile: mobile,
     };
     axios
-      .post(`http://3.24.232.247/address/address/`, data, {
+      .post(`http://localhost:8000/address/address/`, data, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -140,7 +140,6 @@ const Address = () => {
   return (
     <React.Fragment>
       <Anouncement />
-      <Navbar />
       <Container>
         <Toaster />
         <FormContainer>
@@ -166,7 +165,6 @@ const Address = () => {
           </Form>
         </FormContainer>
       </Container>
-      <Footer />
     </React.Fragment>
   );
 };

@@ -108,7 +108,7 @@ const ProductDetail = styled.span`
 `;
 const ProductName = styled.span`
   margin: 5px 0px;
-  ${mobile({ fontSize: "12px", marginLeft: "20px", marginTop: "20px" })}
+  ${mobile({ fontSize: "12px", marginLeft: "5px", marginTop: "10px" })}
 `;
 const ProductSize = styled.span`
   flex: 1;
@@ -201,10 +201,11 @@ const RemoveIcon = styled.div`
   justify-content: center;
 `;
 const RemoveButton = styled.button`
-  height: 30px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   background-color: black;
-  color: white;
+  color: red;
+  border-radius: 50%;
   margin-right: 20px;
   cursor: pointer;
   ${mobile({
@@ -212,16 +213,8 @@ const RemoveButton = styled.button`
     height: "40px",
     borderRadius: "50%",
     border: "none",
-    backgroundColor: "#d6d1d1",
-    color: "black",
-  })}/* ${tab({
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    border: "none",
-    backgroundColor: "#d6d1d1",
-    color: "black",
-  })} */
+    color: "red",
+  })}
 `;
 
 const Cart = () => {
@@ -241,7 +234,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get(`http://3.24.232.247/cart/`, {
+      .get(`http://localhost:8000/cart/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -288,7 +281,7 @@ const Cart = () => {
         alert("Payment success.");
 
         axios
-          .get(`http://3.24.232.247/checkout/cart-checkout/`, {
+          .get(`http://localhost:8000/checkout/cart-checkout/`, {
             headers: {
               Authorization: `Bearer ` + localStorage.getItem("access_token"),
               "Content-Type": "application/json",
@@ -333,7 +326,7 @@ const Cart = () => {
   const cartCountDecrement = (id, count, index) => {
     axios
       .post(
-        `http://3.24.232.247/cart/cart-product-decrement/`,
+        `http://localhost:8000/cart/cart-product-decrement/`,
         {
           product: id,
           count: count - 1,
@@ -357,7 +350,7 @@ const Cart = () => {
   const cartCountIncrement = (id, count, index) => {
     axios
       .post(
-        `http://3.24.232.247/cart/cart-product/`,
+        `http://localhost:8000/cart/cart-product/`,
         {
           product: id,
           count: count + 1,
@@ -384,7 +377,7 @@ const Cart = () => {
   const cartDelete = (id) => {
     console.log(id);
     axios
-      .delete(`http://3.24.232.247/cart/cartDelete/${id}/`, {
+      .delete(`http://localhost:8000/cart/cartDelete/${id}/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -394,7 +387,7 @@ const Cart = () => {
         console.log("deleted");
         console.log(res.data);
         axios
-          .get(`http://3.24.232.247/cart/`, {
+          .get(`http://localhost:8000/cart/`, {
             headers: {
               Authorization: `Bearer ` + localStorage.getItem("access_token"),
               "Content-Type": "application/json",
@@ -430,7 +423,7 @@ const Cart = () => {
   };
   const checkoutAllPrdoducts = () => {
     axios
-      .get("http://3.24.232.247/checkout/test-checkout/", {
+      .get("http://localhost:8000/checkout/test-checkout/", {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -466,7 +459,12 @@ const Cart = () => {
             CREATE YOUR ADDRESS
           </TopButton>
         </Top>
+        {
+          cart.length > 0 ?
         <Title>ADDED ITEMS</Title>
+        :
+        <Title>CART IS EMPTY</Title>
+        }
         <Bottom>
           <Info>
             {cart.map((item, index) => {

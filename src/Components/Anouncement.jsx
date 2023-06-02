@@ -23,7 +23,7 @@ const Anouncement = () => {
   const [announcement, setAnnouncement] = useState([])
 
   useEffect(() => {
-    axios.get(`http://3.24.232.247/announcement/`)
+    axios.get(`http://localhost:8000/announcement/`)
     .then((res)=>{
       setAnnouncement(res.data)
     })

@@ -82,7 +82,7 @@ const AddressEdit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://3.24.232.247/address/addressdetail/`, {
+      .get(`http://localhost:8000/address/addressdetail/`, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -90,22 +90,16 @@ const AddressEdit = () => {
       })
       .then((res) => {
         console.log(res.data)
-        // setFullname(res.data[0].fullName);
-        // setAddressline1(res.data[0].addressLine1);
-        // setAddressline2(res.data[0].addressLine2);
-        // setCity(res.data[0].city);
-        // setCountry(res.data[0].country);
-        // setPincode(res.data[0].pincode);
-        // setMobile(res.data[0].mobile);
       })
       .catch((err) => {
         console.log(err.response)
       })
   }, []);
+
   const datas = {
-    fullname: fullName,
-    addressline1: addressLine1,
-    addressline2: addressLine2,
+    fullName: fullName,
+    addressLine1: addressLine1,
+    addressLine2: addressLine2,
     city: city,
     country: country,
     pincode: pincode,
@@ -115,7 +109,7 @@ const AddressEdit = () => {
   const addressEdit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://3.24.232.247/address/addressedit/`, datas, {
+      .put(`http://localhost:8000/address/addressedit/`, datas, {
         headers: {
           Authorization: `Bearer ` + localStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -132,9 +126,7 @@ const AddressEdit = () => {
 
   return (
     <React.Fragment>
-      <Anouncement />
       <Toaster />
-      <Navbar />
       <Container>
         <Toaster />
         <FormContainer>
@@ -190,7 +182,6 @@ const AddressEdit = () => {
           </Form>
         </FormContainer>
       </Container>
-      <Footer />
     </React.Fragment>
   );
 };

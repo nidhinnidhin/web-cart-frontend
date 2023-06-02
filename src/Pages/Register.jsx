@@ -107,7 +107,7 @@ const Register = () => {
                 "password":password,
                 "confirmpassword":confirmpassword,
             }
-            axios.post("http://3.24.232.247/api/account/register/",datas, {
+            axios.post("http://localhost:8000/api/account/register/",datas, {
                 headers:{
                     "Content-Type":'application/json'
                 }
@@ -119,7 +119,7 @@ const Register = () => {
                     "username":username,
                     "password":password
                 }
-                axios.post("http://3.24.232.247/api/login/",data)
+                axios.post("http://localhost:8000/api/login/",data)
                 .then(res=>{
                     console.log(res.data)
                     localStorage.setItem("access_token",res.data.access)

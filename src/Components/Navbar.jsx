@@ -111,13 +111,13 @@ const Navbar = () => {
 
     const submit = () =>{
 
-        axios.post("http://3.24.232.247/api/account/logout/blacklist/",{
+        axios.post("http://localhost:8000/api/account/logout/blacklist/",{
             refresh_token: localStorage.getItem('refresh_token'),
         })
         .then(res=>{
             localStorage.removeItem("access_token",res.data.access)
             localStorage.removeItem("refresh_token",res.data.refresh)
-            history.push('/')
+            history.push('/login')
         })
     }
 

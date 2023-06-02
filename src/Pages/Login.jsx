@@ -111,7 +111,7 @@ const Login = () => {
             "password":password
         }
         console.log("hello")
-        axios.post("http://3.24.232.247/api/login/",data)
+        axios.post("http://localhost:8000/api/login/",data)
         .then(res=>{
             console.log(res.data)
             localStorage.setItem("access_token",res.data.access)

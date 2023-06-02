@@ -77,7 +77,7 @@ const ForgotPass = () => {
 
     }
     const resetPassword = () => {
-        axios.post(`http://3.24.232.247/api/account/reset-password/`,
+        axios.post(`http://localhost:8000/api/account/reset-password/`,
         {
             "otp":otp,
             "email":email,
@@ -94,7 +94,7 @@ const ForgotPass = () => {
     }
 
     const generateOtp = () => {
-        axios.post(`http://3.24.232.247/api/account/generate-otp/`, 
+        axios.post(`http://localhost:8000/api/account/generate-otp/`, 
         {
             "email": email,
         })
